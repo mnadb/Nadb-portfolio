@@ -4,6 +4,9 @@
 function register_my_menu() {
     register_nav_menu( 'header' , 'En tête du menu' );
     register_nav_menu( 'footer' , 'Pied de page' );
+
+    // Autorise les images mises en avant utilisees par les cards Portfolio.
+    add_theme_support('post-thumbnails');
 }
 add_action( 'after_setup_theme', 'register_my_menu' );
 
@@ -52,4 +55,3 @@ function nadb_assets() {
    
 }
 add_action('wp_enqueue_scripts', 'nadb_assets');
-

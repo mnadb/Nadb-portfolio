@@ -21,14 +21,22 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
   background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
 
   &.active {
-    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+
+    .popup-content {
+      transform: translateY(0) scale(1);
+    }
   }
 }
 
@@ -45,11 +53,29 @@
 
     padding: 1.2rem 1.6rem 1.4rem;
     border-radius: 12px;
+    transform: translateY(18px) scale(0.98);
+    transition: transform 0.25s ease;
 }
 
-/* La maquette n'affiche pas de croix visible. */
+/* Bouton de fermeture accessible et visible. */
 .popup-close {
-  display: none;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--dark-red);
+  color: var(--white);
+
+  &::before {
+    content: "x";
+    line-height: 1;
+  }
 }
 
 /* Image CONTACT du haut : plus large que le cadre pour être coupée. */
@@ -79,12 +105,12 @@
     margin-bottom: 16px;
   }
 
-  /* Labels : NOM, E-MAIL, RÉF. PHOTO, MESSAGE. */
+  /* Labels : NOM, E-MAIL, MESSAGE. */
   label,
   .wpforms-field-label {
     display: block;
     margin: 0 0 6px;
-    color: var(--dark-blue);
+    color: var(--dark-red);
     font-family: "Space Mono", monospace;
     font-size: 1rem;
     font-weight: 400;
@@ -122,12 +148,14 @@
 
   button[type="submit"],
   .wpforms-submit {
-    width: 100% !important;
+    display: block;
+    width: min(100%, 260px) !important;
     height: 48px;
+    margin: 12px auto 0 !important;
     border: 0;
     border-radius: 3px;
-    background: var(--medium-grey) !important;
-    color: var(--black) !important;
+    background: var(--dark-red) !important;
+    color: var(--white) !important;
     font-family: "Space Mono", monospace;
     font-size: 1rem;
     cursor: pointer;

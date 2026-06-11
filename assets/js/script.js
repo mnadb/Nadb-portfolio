@@ -53,3 +53,52 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Anime le slider Technologies de la page A propos.
+  const slider = document.querySelector("[data-tech-slider]");
+
+  // Le script reste inactif sur les pages qui n'ont pas ce slider.
+  if (!slider) return;
+
+  const viewport = slider.querySelector(".tech-slider__viewport");
+  const previousButton = slider.querySelector(".tech-slider__button--prev");
+  const nextButton = slider.querySelector(".tech-slider__button--next");
+
+  if (!viewport || !previousButton || !nextButton) return;
+
+  const getSlideWidth = () => {
+    const slide = viewport.querySelector(".tech-slide");
+    const gap = 18;
+
+    return slide ? slide.getBoundingClientRect().width + gap : 220;
+  };
+
+  // Deplace le slider d'une carte a la fois.
+  const moveSlider = (direction = 1) => {
+    const nextPosition = viewport.scrollLeft + getSlideWidth() * direction;
+
+    if (nextPosition >= viewport.scrollWidth - viewport.clientWidth - 4) {
+      viewport.scrollTo({ left: 0, behavior: "smooth" });
+      return;
+    }
+
+    if (nextPosition <= 0) {
+      viewport.scrollTo({ left: viewport.scrollWidth, behavior: "smooth" });
+      return;
+    }
+
+    viewport.scrollBy({ left: getSlideWidth() * direction, behavior: "smooth" });
+  };
+
+  previousButton.addEventListener("click", () => moveSlider(-1));
+  nextButton.addEventListener("click", () => moveSlider(1));
+
+  // Ajoute une animation automatique simple, sans gener l'utilisateur.
+  let autoplay = window.setInterval(() => moveSlider(1), 2800);
+
+  slider.addEventListener("mouseenter", () => window.clearInterval(autoplay));
+  slider.addEventListener("mouseleave", () => {
+    autoplay = window.setInterval(() => moveSlider(1), 2800);
+  });
+});
