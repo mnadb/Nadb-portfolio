@@ -1,8 +1,260 @@
 /* ==============================
    TABLETTE
 ================================*/
+@media (max-width: 1023px) {
+  .main-navigation {
+    height: 72px;
+    padding-inline: 32px;
+
+    .nav-menu {
+      gap: 1.2rem;
+    }
+  }
+
+  .hero {
+    h1 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      letter-spacing: 3px;
+      -webkit-text-stroke-width: 2px;
+    }
+
+    .img-hero,
+    img {
+      min-height: 360px;
+      object-fit: cover;
+    }
+  }
+
+  .portfolio-section,
+  .page-content,
+  .project-detail {
+    padding-inline: 32px;
+  }
+
+  .portfolio-grid {
+    gap: 28px;
+  }
+
+  .portfolio-grid .portfolio-card__content {
+    margin-inline: 18px;
+    padding: 24px;
+  }
+
+  .project-details__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-slider {
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+  }
+}
 
 
 /* ==============================
    MOBILE
 ================================*/
+@media (max-width: 767px) {
+  .main-navigation {
+    z-index: 30;
+    height: 72px;
+    padding-inline: 20px;
+
+    .logo img {
+      width: 76px;
+    }
+
+    .burger {
+      display: flex;
+      width: 28px;
+      height: 20px;
+    }
+
+    .burger.active span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+
+    .burger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .burger.active span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .nav-menu {
+      position: fixed;
+      z-index: 20;
+      inset: 120px 0 0;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      min-height: calc(100dvh - 72px);
+      padding: 32px 20px;
+      background: var(--dark-red);
+      color: var(--white);
+    }
+
+    .nav-menu.open {
+      display: flex;
+    }
+
+    .nav-menu a {
+      color: var(--white);
+      font-size: 1.6rem;
+    }
+  }
+
+  .hero {
+    .img-hero,
+    img {
+      min-height: 260px;
+      object-fit: cover;
+    }
+
+    h1 {
+      font-size: clamp(1.4rem, 8vw, 2.2rem);
+      letter-spacing: 1px;
+      -webkit-text-stroke-width: 1px;
+      padding-bottom: 188px;
+    }
+  }
+
+  .portfolio-section,
+  .page-content,
+  .project-detail {
+    padding: 42px 18px;
+  }
+
+  .portfolio-section__header {
+    margin-bottom: 28px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .portfolio-grid .portfolio-card {
+    border-radius: 14px;
+  }
+
+  .portfolio-grid .portfolio-card__image {
+    height: auto;
+    aspect-ratio: 1.15 / 1;
+  }
+
+  .portfolio-grid .portfolio-card__content {
+    margin: -36px 14px 18px;
+    padding: 22px 18px;
+  }
+
+  .portfolio-actions,
+  .project-actions {
+    flex-direction: column;
+    margin-top: 28px;
+  }
+
+  .cta-choix,
+  .project-github {
+    width: min(100%, 280px);
+  }
+
+  .project-hero h1,
+  .page-content h1 {
+    font-size: clamp(1.8rem, 9vw, 2.4rem);
+  }
+
+  .project-image img,
+  .project-screenshot img {
+    border-radius: 12px;
+  }
+
+  .project-details {
+    padding: 22px 16px;
+  }
+
+  .project-details__item {
+    padding: 18px;
+  }
+
+  .about-technologies {
+    padding: 8px 14px 48px;
+  }
+
+  .tech-slider {
+    grid-template-columns: 38px minmax(0, 1fr) 38px;
+    gap: 8px;
+  }
+
+  .tech-slider__button {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+
+  .tech-slide {
+    flex-basis: min(72vw, 220px);
+    min-height: 122px;
+    padding: 18px;
+  }
+
+  .tech-slide__image {
+    max-width: 84px;
+    height: 64px;
+  }
+
+  .menu_footer {
+    padding: 24px 16px;
+
+    .menu {
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+  }
+
+  .popup-overlay {
+    padding: 14px;
+  }
+
+  .popup-content {
+    width: min(100%, 360px);
+    max-height: calc(100dvh - 28px);
+    padding: 0.9rem;
+    border-width: 3px;
+  }
+
+  .popup-close {
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .img-contact {
+    width: 150%;
+    height: 76px;
+    margin-left: -52px;
+  }
+
+  .popup-form {
+    width: 100%;
+    max-width: none;
+  }
+
+  .popup-form label,
+  .popup-form .wpforms-field-label {
+    font-size: 0.78rem;
+  }
+
+  .popup-form input,
+  .popup-form select {
+    height: 38px;
+  }
+
+  .popup-form textarea {
+    min-height: 110px;
+  }
+}

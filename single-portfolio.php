@@ -38,7 +38,7 @@
                 Me contacter
             </button>
 
-            <a class="back-link" href="<?php echo esc_url($portfolio_url); ?>">
+            <a class="back-link" href="<?php echo esc_url(home_url('/portfolio/')); ?>">
                 Retour au portfolio
             </a>
         </div>
