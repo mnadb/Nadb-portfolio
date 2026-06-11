@@ -1,0 +1,1123 @@
+@charset "UTF-8";
+/*
+Theme Name:  Nathalie Mota 
+Theme URI: http://localhost:8080/nathalie_Mota
+Author: Nathalie mota
+Author URI: http://localhost:8080/nathalie_Mota
+Description: photographie
+Version: 1.0
+Tags: mariage, évenement, photos
+Text Domain:Nathalie Mota
+*/
+/* ==============================
+    RESET GLOBAL
+================================*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  line-height: 1.5;
+  font-family: "Space Mono", monospace;
+  color: var(--black);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.main-navigation {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding-inline: clamp(1rem, 5vw, 9rem);
+  background: var(--white);
+}
+.main-navigation .logo img {
+  width: clamp(250px, 18vw, 216px);
+  height: auto;
+}
+.main-navigation .nav-menu {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.main-navigation .nav-menu a {
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: font-size 0.3s ease;
+}
+.main-navigation .nav-menu a:hover {
+  color: var(--black);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.burger {
+  display: none;
+  width: 32px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.burger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--black);
+  transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease;
+}
+
+.has-mobile-menu-open {
+  overflow: hidden;
+}
+
+:root {
+  --red: #e00000;
+  --black: #000000;
+  --medium-grey: #d8d8d8;
+  --light-red: #fe5858;
+  --dark-blue: #313144;
+  --light-grey: #e5e5e5;
+  --tertiary-red: #ffD6D6;
+  --dark-red: #c4c4c4;
+  --white: #ffffff;
+}
+
+.menu_footer {
+  border-top: 1px solid var(--black);
+  padding: 1rem;
+}
+.menu_footer .menu {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.menu_footer .menu a,
+.menu_footer .menu span {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+.menu_footer .menu a {
+  cursor: pointer;
+  transition: font-size 0.3s ease;
+}
+.menu_footer .menu a:hover {
+  color: var(--black);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/*============================
+Page single
+==============================*/
+.single-photo-page {
+  width: min(90%, 1360px);
+  margin: 0 auto;
+  padding-top: 35px;
+}
+.single-photo-page .photo-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.single-photo-page .photo-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--black);
+}
+.single-photo-page h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 0.9;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+.single-photo-page ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.single-photo-page li {
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+}
+.single-photo-page .photo-image {
+  position: relative;
+}
+.single-photo-page .photo-image > img {
+  width: 100%;
+  height: 700px;
+  object-fit: cover;
+  display: block;
+}
+.single-photo-page .photo-navigation {
+  position: absolute;
+  right: 0;
+  bottom: -95px;
+  width: 90px;
+}
+.single-photo-page .nav-thumbnail img {
+  width: 80px;
+  height: 70px;
+  object-fit: cover;
+  display: block;
+  margin: 0 0 -15px 11px;
+}
+.single-photo-page .nav-arrows {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+.single-photo-page .nav-arrows a {
+  color: var(--black);
+  text-decoration: none;
+  font-size: 24px;
+  line-height: 1;
+}
+.single-photo-page .photo-contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: center;
+  border-bottom: 1px solid var(--black);
+  padding: 45px 0 30px;
+}
+.single-photo-page .photo-contact p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+.single-photo-page .photo-contact button {
+  width: 60%;
+  padding: 16px;
+  margin-left: -28%;
+  border: 0;
+  background: var(--medium-grey);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.single-photo-page .photo-contact button:hover {
+  background: var(--black);
+  color: var(--white);
+}
+.single-photo-page .related {
+  padding: 70px 0 90px;
+}
+.single-photo-page .related h2 {
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  margin-bottom: 45px;
+  font-weight: 400;
+}
+.single-photo-page .related-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.single-photo-page .related-grid img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ==============================
+   HERO
+================================*/
+.hero {
+  position: relative;
+  width: 100%;
+}
+.hero .img-hero {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.hero h1 {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  margin: 0;
+  font-family: "Space Mono", monospace;
+  font-size: 6rem;
+  font-style: italic;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 3px var(--white);
+  text-transform: uppercase; /*convertit tout le texte en majuscule*/
+  letter-spacing: 6px;
+  text-align: center;
+}
+
+/* ==============================
+   GRID PHOTOS
+================================*/
+.cards-photos {
+  width: min(90%, 1200px);
+  margin-inline: auto;
+}
+.cards-photos .grid-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.cards-photos img {
+  width: 100%;
+  height: clamp(320px, 50vh, 518px);
+  object-fit: cover;
+}
+
+.cta-choix {
+  display: block;
+  min-width: 250px;
+  margin: 40px auto;
+  padding: 12px 24px;
+  border: 0;
+  background: var(--medium-grey);
+  color: var(--black);
+}
+
+.cta-choix:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+.no-photos {
+  grid-column: 1/-1;
+  margin: 40px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ==============================
+  PRIVACY POLICY
+================================*/
+.privacy_policy {
+  margin: 45px;
+}
+
+/* ==============================
+   POLICES LOCALES
+================================*/
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/Space_Mono/SpaceMono-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/Space_Mono/SpaceMono-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/Space_Mono/SpaceMono-Italic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/Space_Mono/SpaceMono-BoldItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+}
+/* ==============================
+   POPUP CONTACT
+
+================================*/
+.btn-contact {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+/* Bloque le scroll de la page quand la popup est ouverte. */
+.has-popup-open {
+  overflow: hidden;
+}
+
+/* Fond sombre derrière la popup. */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+}
+.popup-overlay.active {
+  display: flex;
+}
+
+/* Cadre blanc de la popup. */
+.popup-content {
+  position: relative;
+  overflow: hidden auto;
+  border: 5px solid var(--black);
+  background: var(--white);
+  box-sizing: border-box;
+  width: min(636px, 92vw);
+  max-height: 96vh;
+  padding: 1.2rem 1.6rem 1.4rem;
+  border-radius: 12px;
+}
+
+/* La maquette n'affiche pas de croix visible. */
+.popup-close {
+  display: none;
+}
+
+/* Image CONTACT du haut : plus large que le cadre pour être coupée. */
+.img-contact {
+  display: block;
+  width: 134%;
+  height: 130px;
+  margin-left: -66px;
+  object-fit: cover;
+  object-position: left top;
+}
+
+/* Formulaire centré dans la popup. */
+.popup-form {
+  width: 350px;
+  max-width: calc(100% - 48px);
+  margin: 0 auto;
+  /* WPForms ajoute des marges : on les remet à zéro. */
+}
+.popup-form .wpforms-container,
+.popup-form .wpforms-field {
+  margin: 0;
+  padding: 0;
+}
+.popup-form .wpforms-field {
+  margin-bottom: 16px;
+}
+.popup-form {
+  /* Labels : NOM, E-MAIL, RÉF. PHOTO, MESSAGE. */
+}
+.popup-form label,
+.popup-form .wpforms-field-label {
+  display: block;
+  margin: 0 0 6px;
+  color: var(--dark-blue);
+  font-family: "Space Mono", monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.popup-form {
+  /* La maquette n'affiche pas les astérisques rouges. */
+}
+.popup-form .wpforms-required-label {
+  display: none;
+}
+.popup-form input,
+.popup-form textarea,
+.popup-form select {
+  width: 100% !important;
+  max-width: none !important;
+  border: 1px solid #b8bbc2;
+  border-radius: 8px !important;
+  background: var(--white);
+  font-family: "Poppins", sans-serif !important;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+.popup-form input,
+.popup-form select {
+  height: 42px;
+}
+.popup-form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+.popup-form button[type=submit],
+.popup-form .wpforms-submit {
+  width: 100% !important;
+  height: 48px;
+  border: 0;
+  border-radius: 3px;
+  background: var(--medium-grey) !important;
+  color: var(--black) !important;
+  font-family: "Space Mono", monospace;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.photo {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.photo > img {
+  display: block;
+  width: 100%;
+  height: clamp(320px, 50vh, 518px);
+  object-fit: cover;
+}
+
+.photo-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.6);
+  transition: opacity 0.25s ease;
+}
+.photo:hover .photo-overlay, .photo:focus-within .photo-overlay {
+  opacity: 1;
+}
+
+.photo-overlay__fullscreen {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
+.photo-overlay__fullscreen::before, .photo-overlay__fullscreen::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-color: var(--white);
+  border-style: solid;
+}
+.photo-overlay__fullscreen::before {
+  top: 8px;
+  left: 8px;
+  border-width: 2px 0 0 2px;
+}
+.photo-overlay__fullscreen::after {
+  right: 8px;
+  bottom: 8px;
+  border-width: 0 2px 2px 0;
+}
+
+.photo-overlay__eye {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  transform: translate(-50%, -50%);
+}
+.photo-overlay__eye img {
+  width: 46px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.photo-overlay__infos {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+  left: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--white);
+  font-family: "Space Mono", monospace;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.has-lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 120px 56px;
+  background: rgba(0, 0, 0, 0.92);
+  cursor: default;
+}
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox__figure {
+  width: min(78vw, 980px);
+  max-height: 100%;
+  margin: 0;
+}
+
+.lightbox__image {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 170px);
+  object-fit: contain;
+}
+
+.lightbox__caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 16px;
+  color: var(--white);
+  font-family: "Space Mono", monospace;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+.lightbox__close,
+.lightbox__nav {
+  border: 0;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 28px;
+  right: 42px;
+  font-size: 42px;
+  line-height: 1;
+}
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  transform: translateY(-50%);
+}
+.lightbox__nav span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lightbox__nav--prev {
+  left: 40px;
+}
+.lightbox__nav--prev span::before {
+  content: "";
+  width: 28px;
+  height: 8px;
+  background: url("../images/arrow-left.png") center/contain no-repeat;
+  filter: brightness(0) invert(1);
+}
+
+.lightbox__nav--next {
+  right: 40px;
+}
+.lightbox__nav--next span::after {
+  content: "";
+  width: 28px;
+  height: 8px;
+  background: url("../images/arrow-right.png") center/contain no-repeat;
+  filter: brightness(0) invert(1);
+}
+
+/* ==============================
+    LES FILTRES
+================================*/
+.filters {
+  position: relative;
+  z-index: 2;
+  width: min(90%, 1200px);
+  margin: 40px auto;
+}
+.filters .form-filters {
+  display: grid;
+  grid-template-columns: 260px 260px 1fr;
+  align-items: center;
+  gap: 32px;
+}
+.filters select {
+  width: 260px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1.3px solid var(--black);
+  font-size: 0.875rem;
+  background-color: var(--white);
+  text-transform: uppercase;
+}
+.filters .trier {
+  justify-self: end;
+}
+.filters .select2-container {
+  width: 260px !important;
+  touch-action: manipulation;
+}
+.filters .photo-filter--order {
+  justify-self: end;
+}
+.filters {
+  /* Champ ferme visible lorsque la liste n'est pas deployee. */
+}
+.filters .select2-container--default .select2-selection--single {
+  height: 43px;
+  border: 1px solid var(--black);
+  border-radius: 8px;
+  background: var(--white);
+}
+.filters .select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color: var(--black) !important;
+}
+.filters {
+  /* Le contour bleu signale le filtre ouvert comme sur la maquette. */
+}
+.filters .select2-container--default.select2-container--open .select2-selection--single {
+  border-color: #215aff;
+  border-radius: 8px 8px 0 0;
+}
+.filters {
+  /* Texte du filtre ferme. */
+}
+.filters .select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 43px;
+  padding-left: 16px;
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--black);
+}
+.filters {
+  /* Aligne la fleche dans le champ de 43px de hauteur. */
+}
+.filters .select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 43px;
+  right: 10px;
+}
+
+/*
+ * Select2 place la liste ouverte en dehors de .filters.
+ * La classe ajoutee en JavaScript limite donc le style au menu des photos.
+ */
+.photo-filter-dropdown {
+  z-index: 20;
+  border: 1px solid #215aff;
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  background: var(--white);
+  /* Dimensions et typographie des lignes de la liste ouverte. */
+}
+.photo-filter-dropdown .select2-results__option {
+  padding: 14px 18px;
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+  color: var(--black);
+  background: var(--white);
+}
+.photo-filter-dropdown {
+  /* Premiere nuance rouge lorsque l'utilisateur survole une option. */
+}
+.photo-filter-dropdown .select2-results__option--highlighted.select2-results__option--selectable:not(.select2-results__option--selected),
+.photo-filter-dropdown .select2-results__option--selectable:hover:not(.select2-results__option--selected) {
+  background-color: var(--tertiary-red) !important;
+  color: var(--black) !important;
+}
+.photo-filter-dropdown {
+  /* Deuxieme nuance lors de l'appui, juste avant la selection. */
+}
+.photo-filter-dropdown .select2-results__option--selectable:active:not(.select2-results__option--selected) {
+  background-color: var(--light-red) !important;
+  color: var(--white) !important;
+}
+.photo-filter-dropdown {
+  /* L'option choisie garde le rouge plein de la maquette. */
+}
+.photo-filter-dropdown .select2-results__option--selected {
+  background-color: var(--red) !important;
+  color: var(--white) !important;
+}
+.photo-filter-dropdown {
+  /* Les options non selectionnees restent blanches apres un changement. */
+}
+.photo-filter-dropdown .select2-results__option--selectable:not(.select2-results__option--selected) {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+@media (max-width: 1023px) {
+  .filters .select2-container {
+    width: 100% !important;
+  }
+  .filters .photo-filter--order {
+    justify-self: stretch;
+  }
+}
+/* ==============================
+   TABLETTE
+================================*/
+@media (max-width: 1023px) {
+  .main-navigation {
+    height: 72px;
+    padding-inline: 32px;
+  }
+  .main-navigation .logo img {
+    width: 216px;
+  }
+  .main-navigation .nav-menu {
+    gap: 1.25rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.75rem, 8vw, 4.5rem);
+    -webkit-text-stroke-width: 2px;
+    letter-spacing: 3px;
+  }
+  .filters {
+    width: calc(100% - 64px);
+    margin-block: 32px;
+  }
+  .filters .form-filters {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .filters select {
+    width: 100%;
+  }
+  .filters .trier,
+  .filters .photo-filter--order {
+    justify-self: stretch;
+  }
+  .cards-photos {
+    width: calc(100% - 64px);
+  }
+  .cards-photos .grid-photos {
+    gap: 16px;
+  }
+  .cards-photos img {
+    height: clamp(270px, 44vw, 420px);
+  }
+  .photo-overlay__eye img {
+    width: 38px;
+    height: 30px;
+  }
+  .single-photo-page {
+    width: calc(100% - 64px);
+  }
+  .single-photo-page .photo-image > img {
+    height: clamp(470px, 68vw, 620px);
+  }
+  .single-photo-page .related-grid img {
+    height: clamp(280px, 43vw, 390px);
+  }
+  .lightbox {
+    padding: 64px 64px 50px;
+  }
+}
+/* ==============================
+   MOBILE
+================================*/
+@media (max-width: 767px) {
+  .main-navigation {
+    z-index: 30;
+    height: 72px;
+    padding-inline: 24px;
+  }
+  .main-navigation .logo img {
+    width: 200px;
+  }
+  .main-navigation .burger {
+    display: flex;
+    width: 24px;
+    height: 18px;
+  }
+  .main-navigation .burger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .main-navigation .burger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .main-navigation .burger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  .main-navigation .nav-menu {
+    position: fixed;
+    z-index: 20;
+    top: 115px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    min-height: calc(100dvh - 72px);
+    padding: 24px;
+    background: var(--red);
+    color: var(--white);
+  }
+  .main-navigation .nav-menu.open {
+    display: flex;
+  }
+  .main-navigation .nav-menu a {
+    display: block;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 2rem;
+  }
+  .hero .img-hero,
+  .hero img {
+    height: clamp(180px, 65vw, 280px);
+    object-fit: cover;
+  }
+  .hero h1 {
+    font-size: clamp(1.35rem, 7vw, 2.25rem);
+    -webkit-text-stroke-width: 1px;
+    letter-spacing: 1px;
+  }
+  .filters {
+    width: calc(100% - 64px);
+    margin: 24px auto 14px;
+  }
+  .filters .form-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .filters select,
+  .filters .select2-container {
+    width: 100% !important;
+  }
+  .filters select[name=photo_format],
+  .filters .photo-filter--format {
+    order: 1;
+  }
+  .filters select[name=photo_categorie],
+  .filters .photo-filter--categorie {
+    order: 2;
+  }
+  .filters select[name=photo_order],
+  .filters .photo-filter--order {
+    order: 3;
+  }
+  .cards-photos {
+    width: calc(100% - 32px);
+  }
+  .cards-photos .grid-photos {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .cards-photos img {
+    height: auto;
+    max-height: none;
+    aspect-ratio: 1.13/1;
+    object-fit: cover;
+  }
+  .photo > img {
+    height: auto;
+    aspect-ratio: 1.13/1;
+  }
+  .cta-choix {
+    min-width: min(250px, 100% - 64px);
+    margin-block: 28px;
+  }
+  .single-photo-page {
+    width: calc(100% - 64px);
+    padding-top: 12px;
+  }
+  .single-photo-page .photo-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .single-photo-page .photo-image {
+    order: -1;
+  }
+  .single-photo-page .photo-image > img {
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+  }
+  .single-photo-page .photo-navigation {
+    display: none;
+  }
+  .single-photo-page .photo-meta {
+    padding-bottom: 26px;
+  }
+  .single-photo-page h1 {
+    margin: 0 0 18px;
+    font-size: clamp(2rem, 11vw, 2.75rem);
+  }
+  .single-photo-page li {
+    margin-bottom: 10px;
+    font-size: 0.75rem;
+  }
+  .single-photo-page .photo-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 0 14px;
+    text-align: center;
+  }
+  .single-photo-page .photo-contact p {
+    font-size: 0.75rem;
+  }
+  .single-photo-page .photo-contact button {
+    width: 100%;
+    margin-left: 0;
+    padding: 13px;
+  }
+  .single-photo-page .related {
+    padding: 18px 0 20px;
+  }
+  .single-photo-page .related h2 {
+    margin: 0 0 20px;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  .single-photo-page .related-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .single-photo-page .related-grid img {
+    height: auto;
+    aspect-ratio: 1.13/1;
+  }
+  .menu_footer {
+    padding: 22px 16px;
+  }
+  .menu_footer .menu {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .menu_footer .menu a {
+    font-size: 0.8rem;
+  }
+  .popup-overlay {
+    padding: 16px;
+  }
+  .popup-content {
+    width: min(286px, 100vw - 32px);
+    max-height: calc(100vh - 32px);
+    padding: 0.5rem 0.8rem 0.75rem;
+    border-width: 3px;
+    border-radius: 0;
+  }
+  .img-contact {
+    width: 178%;
+    height: 56px;
+    margin-left: -64px;
+  }
+  .popup-form {
+    width: 100%;
+    max-width: calc(100% - 16px);
+  }
+  .popup-form .wpforms-field {
+    margin-bottom: 10px !important;
+    padding: 0 !important;
+  }
+  .popup-form label,
+  .popup-form .wpforms-field-label {
+    margin-bottom: 4px !important;
+    font-size: 0.65rem !important;
+  }
+  .popup-form input,
+  .popup-form select {
+    height: 34px !important;
+  }
+  .popup-form textarea {
+    height: 92px !important;
+    min-height: 92px !important;
+    padding: 8px !important;
+  }
+  .popup-form button[type=submit],
+  .popup-form .wpforms-submit {
+    height: 38px !important;
+    font-size: 0.7rem !important;
+  }
+  .lightbox {
+    padding: 60px 18px 62px;
+  }
+  .lightbox__figure {
+    width: 100%;
+  }
+  .lightbox__nav {
+    top: auto;
+    bottom: 20px;
+  }
+  .lightbox__nav--prev {
+    left: 18px;
+  }
+  .lightbox__nav--next {
+    right: 18px;
+  }
+  .lightbox__close {
+    top: 14px;
+    right: 18px;
+  }
+}/*# sourceMappingURL=style.css.map */

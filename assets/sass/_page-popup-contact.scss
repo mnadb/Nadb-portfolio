@@ -1,0 +1,135 @@
+/* ==============================
+   POPUP CONTACT
+ 
+================================*/
+
+.btn-contact {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+/* Bloque le scroll de la page quand la popup est ouverte. */
+.has-popup-open {
+  overflow: hidden;
+}
+
+/* Fond sombre derrière la popup. */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+
+  &.active {
+    display: flex;
+  }
+}
+
+/* Cadre blanc de la popup. */
+.popup-content {
+    position: relative;
+    overflow: hidden auto;
+    border: 5px solid var(--black);
+    background: var(--white);
+    box-sizing: border-box;
+
+    width: min(636px, 92vw);
+    max-height: 96vh;
+
+    padding: 1.2rem 1.6rem 1.4rem;
+    border-radius: 12px;
+}
+
+/* La maquette n'affiche pas de croix visible. */
+.popup-close {
+  display: none;
+}
+
+/* Image CONTACT du haut : plus large que le cadre pour être coupée. */
+.img-contact {
+  display: block;
+  width: 134%;
+  height: 130px;
+  margin-left: -66px;
+  object-fit: cover;
+  object-position: left top;
+}
+
+/* Formulaire centré dans la popup. */
+.popup-form {
+  width: 350px;
+  max-width: calc(100% - 48px);
+  margin: 0 auto;
+
+  /* WPForms ajoute des marges : on les remet à zéro. */
+  .wpforms-container,
+  .wpforms-field {
+    margin: 0;
+    padding: 0;
+  }
+
+  .wpforms-field {
+    margin-bottom: 16px;
+  }
+
+  /* Labels : NOM, E-MAIL, RÉF. PHOTO, MESSAGE. */
+  label,
+  .wpforms-field-label {
+    display: block;
+    margin: 0 0 6px;
+    color: var(--dark-blue);
+    font-family: "Space Mono", monospace;
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  /* La maquette n'affiche pas les astérisques rouges. */
+  .wpforms-required-label {
+    display: none;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100% !important;
+    max-width: none !important;
+    border: 1px solid #b8bbc2;
+    border-radius: 8px!important;
+    background: var(--white);
+    // Force la police du champ car la feuille de style WPForms est plus specifique.
+    font-family: "Poppins", sans-serif !important;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+
+  input,
+  select {
+    height: 42px;
+  }
+
+  textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+
+  button[type="submit"],
+  .wpforms-submit {
+    width: 100% !important;
+    height: 48px;
+    border: 0;
+    border-radius: 3px;
+    background: var(--medium-grey) !important;
+    color: var(--black) !important;
+    font-family: "Space Mono", monospace;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+}
